@@ -1,0 +1,5 @@
+pdflatex CV.tex
+
+pdflatex -interaction=nonstopmode CV.tex
+
+pdflatex -output-directory=%OUTDIR% CV.tex
