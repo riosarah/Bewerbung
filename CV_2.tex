@@ -1,0 +1,269 @@
+\documentclass[9pt, a4paper]{article}
+
+% =========================================
+% PACKAGES
+% =========================================
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[top=0.65cm, bottom=0.65cm, left=1.1cm, right=1.1cm]{geometry}
+\usepackage{xcolor}
+\usepackage{fontawesome5}
+\usepackage{hyperref}
+\usepackage{tcolorbox}
+\usepackage{tabularx}
+\usepackage{parskip}
+\usepackage{microtype}
+\usepackage{lmodern}
+
+\tcbuselibrary{skins}
+
+% =========================================
+% COLORS
+% =========================================
+\definecolor{headerblue}{HTML}{1A2E4A}
+\definecolor{accent}{HTML}{2E86C1}
+\definecolor{accentlight}{HTML}{D6EAF8}
+\definecolor{textdark}{HTML}{2C3E50}
+\definecolor{textgray}{HTML}{7F8C8D}
+\definecolor{tagbg}{HTML}{EBF5FB}
+\definecolor{tagborder}{HTML}{3498DB}
+
+% =========================================
+% SETUP
+% =========================================
+\pagestyle{empty}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0pt}
+\linespread{0.97}
+\hypersetup{colorlinks=true, urlcolor=accent, linkcolor=accent}
+
+% =========================================
+% CUSTOM COMMANDS
+% =========================================
+
+% Rounded skill tag
+\newcommand{\skilltag}[1]{%
+  \tcbox[on line, boxsep=0pt, left=4pt, right=4pt, top=2pt, bottom=2pt,
+    colback=tagbg, colframe=tagborder!50, boxrule=0.4pt, arc=8pt,
+    fontupper=\small\color{textdark}]{#1}\,%
+}
+
+% Section header with colored rule above
+\newcommand{\cvsection}[1]{%
+  \vspace{3pt}%
+  \noindent{\color{accent}\rule{\linewidth}{1.5pt}}\par\vspace{1.5pt}%
+  \noindent{\large\bfseries\color{headerblue} #1}\par%
+  \vspace{1pt}%
+}
+
+% Job entry header: {period}{title}{company}{location}
+\newcommand{\cvjob}[4]{%
+  \noindent%
+  \begin{minipage}[t]{0.74\linewidth}
+    \vspace{0pt}\raggedright\bfseries\color{textdark} #2
+  \end{minipage}\hfill%
+  \begin{minipage}[t]{0.24\linewidth}
+    \vspace{0pt}\raggedleft\small\color{textgray}\textit{#1}
+  \end{minipage}\par%
+  \vspace{-1pt}%
+  \noindent%
+  \begin{minipage}[t]{0.74\linewidth}
+    \vspace{0pt}\raggedright\small\color{accent} #3
+  \end{minipage}\hfill%
+  \begin{minipage}[t]{0.24\linewidth}
+    \vspace{0pt}\raggedleft\small\color{textgray} #4
+  \end{minipage}\par%
+  \vspace{2pt}%
+}
+
+% Education entry header: {period}{degree}{institution}
+\newcommand{\cvedu}[3]{%
+  \vspace{3pt}%
+  \noindent%
+  \begin{minipage}[t]{0.74\linewidth}
+    \vspace{0pt}\raggedright\bfseries\color{textdark} #2
+  \end{minipage}\hfill%
+  \begin{minipage}[t]{0.24\linewidth}
+    \vspace{0pt}\raggedleft\small\color{textgray}\textit{#1}
+  \end{minipage}\par%
+  \vspace{-1pt}%
+  \noindent{\small\color{accent} #3}\par%
+  \vspace{1pt}%
+}
+
+% Short description paragraph
+\newcommand{\cvdesc}[1]{%
+  \noindent{\small\color{textdark} #1}\par\vspace{1pt}%
+}
+
+% Sidebar skill group: {label}{tags}
+\newcommand{\skillgroup}[2]{%
+  \vspace{3pt}%
+  \noindent{\footnotesize\bfseries\color{accent}\MakeUppercase{#1}}\par\vspace{2pt}%
+  \noindent #2\par%
+}
+
+% =========================================
+% COLUMN WIDTHS (minipage-based, no paracol)
+% =========================================
+\newlength{\sidecolwidth}
+\newlength{\maincolwidth}
+\newlength{\gapcolwidth}
+\setlength{\gapcolwidth}{0.025\textwidth}
+\setlength{\sidecolwidth}{0.31\textwidth}
+\setlength{\maincolwidth}{\dimexpr\textwidth - \sidecolwidth - \gapcolwidth - 3pt\relax}
+
+% =========================================
+% DOCUMENT
+% =========================================
+\begin{document}
+
+% ---- HEADER BAR ----
+\noindent
+\begin{tcolorbox}[
+  enhanced,
+  colback=headerblue,
+  colframe=headerblue,
+  boxrule=0pt,
+  arc=0pt,
+  left=0.35cm, right=0.85cm, top=0.35cm, bottom=0.35cm,
+  width=\linewidth,
+  sharp corners,
+  nobeforeafter,
+  before skip=0pt,
+  after skip=4pt
+]
+  \begin{tabularx}{\linewidth}{@{}p{3cm}X r@{}}
+    \includegraphics[width=3cm,height=4.5cm,keepaspectratio]{Sarah_Bewerbungsfoto_2.png}
+    &
+    \begin{tabular}[b]{@{}l}
+      {\fontsize{23}{26}\selectfont\bfseries\color{white} Sarah Rio}\\[3pt]
+      {\normalsize\color{accentlight} Full Stack Developer}
+    \end{tabular}
+    &
+    \begin{tabular}[b]{@{}r}
+      {\color{white}\small\faPhone\enspace(+43) 650 4134 272}\\[3pt]
+      {\color{white}\small\faEnvelope\enspace\href{mailto:sarahkay.rio@gmail.com}{sarahkay.rio@gmail.com}}\\[3pt]
+      {\color{white}\small\faGithub\enspace\href{https://github.com/riosarah}{github.com/riosarah}}\\[3pt]
+      {\color{white}\small\faMapMarker\enspace Pichl bei Wels}\\
+    \end{tabular}
+  \end{tabularx}
+\end{tcolorbox}%
+\nopagebreak
+% ---- BODY: LEFT (main) | RIGHT (sidebar) ----
+\noindent%
+\begin{minipage}[t]{\maincolwidth}
+
+  % ---- Über mich ----
+  \cvsection{Über mich}
+  {\small Full Stack Developer mit Fokus auf \textbf{KI-Integration} und
+  \textbf{Backend-Architektur}. Mein pädagogischer Hintergrund stärkt meine
+  Arbeit in \textbf{Kommunikation}, \textbf{Organisation} und \textbf{Stressresistenz}
+  und hilft mir, die Brücke zwischen komplexer Technik und menschlichen Bedürfnissen
+  zu schlagen. Ich entwickle robuste Softwarelösungen, die technisch präzise,
+  verständlich und im realen Einsatz wirksam sind.}
+
+  % ---- Technische Projekte ----
+  \cvsection{Technische Projekte}
+
+  \cvjob{2025 -- 2026}{Diplomprojekt: Team Lead \& Full Stack Developer}{AiKita Planning | HTL Wels}{}
+  \noindent{\small Im Rahmen meines \textbf{HTL-Diplomprojekts} entwickelte ich eine
+  AI-gestützte Planungssoftware für pädagogische Prozesse.
+  Backend-Entwicklung mit .NET\,/\,ASP.NET Core, \textbf{KI-Modellintegration} für
+  Verhaltensanalyse und Empfehlungssystem. Verantwortung für
+  Datenbankarchitektur, Google Cloud Hosting und Frontend sowie
+  \textbf{Teamleitung} und Projektkoordination.}
+  \par\vspace{2pt}
+  \noindent{\small\color{accent}\textbf{\faChevronRight\enspace 80\,\% Kostenreduktion}
+  durch effizientes \textbf{Container-Streamlining} der KI-Infrastruktur.}
+  \par\vspace{1pt}
+  \noindent{\small\color{accent}\textbf{\faChevronRight\enspace Produktionsreife Deployment-Strecke}
+  durch den Aufbau einer stabilen, containerisierten Cloud-Architektur für Entwicklung und Betrieb.}
+  \par\vspace{2pt}
+  \noindent{\small\faCodeBranch\enspace \textbf{Projekt: }
+    \href{https://github.com/AiKitaDevelopment/AiKita.Planning}%
+    {\texttt{AiKitaDevelopment/AiKita.Planning}}}
+  \par\vspace{2pt}
+
+  % ---- Berufserfahrung ----
+  \cvsection{Berufserfahrung}
+
+  \cvjob{2020 -- 2023}{Kindergartenpädagogin}{Verschiedene Einrichtungen}{}
+  \cvdesc{Gruppenleitung, Teamkoordination und Projektmanagement mit hoher Kommunikations- und Organisationsverantwortung.}
+
+  \cvjob{2018 -- 2020}{Kindertagespflegerin}{Selbstständig}{}
+  \cvdesc{Eigenverantwortliche Organisation, strukturierte Planung und verlässliche Umsetzung im direkten Austausch mit Familien.}
+
+  % ---- Ausbildung ----
+  \cvsection{Ausbildung}
+
+  \cvedu{2023 -- 2026}{HTL Informatik + Zusatzausbildung Medientechnik}{HTL Wels}
+  \cvdesc{Abgeschlossen mit ausgezeichnetem Erfolg.
+  Schwerpunkt: Softwareentwicklung, Datenbanken und Medienproduktion.}
+
+  \cvedu{2006 -- 2011}{BAKIP\,/\,BBA für Kindergartenpädagogik}%
+    {Bundesanstalt für Kindergartenpädagogik}
+  \cvdesc{Matura und Diplomprüfung mit ausgezeichnetem Erfolg abgeschlossen.}
+
+  \cvedu{2011 -- 2014}{Studium Chemie\,/\,Sozialwirtschaft}{Universität, ohne Abschluss}
+
+  \vspace{2pt}
+
+  % ---- Stärken ----
+  \cvsection{Stärken}
+  \begin{tabularx}{\linewidth}{@{}lX@{}}
+    {\color{accent}\faLightbulb} &
+      \textbf{Schnelle Auffassungsgabe:}~{\small Schnelles Erfassen komplexer Anforderungen und Übersetzen in umsetzbare Lösungen.}\\[4pt]
+    {\color{accent}\faCogs} &
+      \textbf{Problemlösungskompetenz:}~{\small Bewiesen durch die Optimierung der KI-Infrastruktur bei AiKita und den Aufbau wartbarer Architekturen.}\\[4pt]
+    {\color{accent}\faRocket} &
+      \textbf{Eigenmotivation:}~{\small Hohe Eigeninitiative von der Konzeption bis zum produktiven Betrieb im Teamlead-Kontext.}\\
+  \end{tabularx}
+
+\end{minipage}%
+\hspace{\gapcolwidth}%
+\begin{minipage}[t]{\sidecolwidth}
+
+  % ---- Technische Skills ----
+  \cvsection{Technische Skills}
+
+  \skillgroup{Client-Side}{%
+    {\small\color{textdark} HTML, CSS, JavaScript, TypeScript, Angular, Bootstrap}%
+  }
+
+  \skillgroup{Backend}{%
+    {\small\color{textdark} C\#, .NET 8, ASP.NET Core, EF Core, REST API, Python, FastAPI}%
+  }
+
+  \skillgroup{Datenbanken}{%
+    {\small\color{textdark} MySQL, PostgreSQL, MongoDB, Redis}%
+  }
+
+  \skillgroup{AI \& Machine Learning}{%
+    {\small\color{textdark} Scikit-learn, NumPy, Pandas, OpenAI API, SBERT}%
+  }
+
+  \skillgroup{Cloud \& DevOps}{%
+    {\small\color{textdark} Docker, Google Cloud Run, Aiven Cloud, n8n}%
+  }
+
+  \skillgroup{Testing}{%
+    {\small\color{textdark} xUnit, PyUnit, Postman}%
+  }
+
+  \skillgroup{Tools \& Methoden}{%
+    {\small\color{textdark} Git, Scrum, PlantUML, \LaTeX, Photoshop, Premiere Pro, DaVinci Resolve, Lightroom, Unity}%
+  }
+
+  % ---- Sprachen ----
+  \cvsection{Sprachen}
+  {\small \textbf{Deutsch}: Erstsprache\\
+  \textbf{Englisch}: Fließend}
+
+  % ---- Interessen ----
+  \cvsection{Interessen}
+  {\small Professioneller Gesang \textbullet{} Musik \textbullet{} Textile Kunst \textbullet{} Gaming}
+
+\end{minipage}
+
+\end{document}

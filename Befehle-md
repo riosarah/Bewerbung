@@ -2,4 +2,6 @@ pdflatex CV.tex
 
 pdflatex -interaction=nonstopmode CV.tex
 
+pdflatex -interaction=nonstopmode CV_2.tex
+
 pdflatex -output-directory=%OUTDIR% CV.tex
